@@ -8,4 +8,4 @@ export async function getPosts() {
 
 export async function getPost(slug: string) {
     return prisma.post.findUnique({ where: { slug } });
-  }
+}

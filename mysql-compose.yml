@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - database:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=remix@pass@123
+      - MYSQL_DATABASE=db_remix
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    links:
+      -  mysql
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+      - UPLOAD_LIMIT=300M
+volumes:
+  database:
